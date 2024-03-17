@@ -29,3 +29,18 @@ TEST_CASE("P001: merge sorted array") {
     CHECK(nums1 == test1);
   }
 }
+
+int P002_remove_element(std::vector<int> &nums, int val) {
+  std::erase_if(nums, [val](const int &x) { return x == val; });
+  return nums.size();
+}
+
+TEST_CASE("P001: merge sorted array") {
+  {
+    std::vector<int> nums{3, 2, 2, 3};
+    const int ret = P002_remove_element(nums, 3);
+    std::vector<int> test1{2, 2};
+    CHECK(2 == ret);
+    CHECK(nums == test1);
+  }
+}
