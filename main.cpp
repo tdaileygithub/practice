@@ -35,7 +35,7 @@ int P002_remove_element(std::vector<int> &nums, int val) {
   return nums.size();
 }
 
-TEST_CASE("P001: merge sorted array") {
+TEST_CASE("P002: remove elements") {
   {
     std::vector<int> nums{3, 2, 2, 3};
     const int ret = P002_remove_element(nums, 3);
