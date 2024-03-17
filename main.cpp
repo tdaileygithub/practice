@@ -3,7 +3,16 @@
 
 #include <algorithm>
 #include <iostream>
+#include <limits>
 #include <vector>
+
+template <typename T>
+std::ostream &operator<<(std::ostream &outstream, const std::vector<T> &v) {
+  for (auto x : v) {
+    outstream << x << " ";
+  }
+  return outstream;
+}
 
 void P001_merge_sorted_array(std::vector<int> &nums1, int m,
                              std::vector<int> &nums2, int n) {
@@ -42,5 +51,39 @@ TEST_CASE("P002: remove elements") {
     std::vector<int> test1{2, 2};
     CHECK(2 == ret);
     CHECK(nums == test1);
+  }
+}
+
+std::string P003_longestCommonPrefix(std::vector<std::string> &strs) {
+  if (strs.size() == 0) {
+    return "";
+  }
+  if (strs.size() == 1) {
+    return strs[0];
+  }
+  std::string pre = strs[0];
+  for (int i = 0; i < strs.size(); i++) {
+    while (strs[i].find(pre) != 0) {
+      pre = pre.substr(0, pre.length() - 1);
+      if (pre == "") {
+        return "";
+      }
+    }
+  }
+  return pre;
+}
+
+TEST_CASE("P003: longest common prefix") {
+  {
+    std::vector<std::string> strs{"flower", "flow", "flight"};
+    CHECK("fl" == P003_longestCommonPrefix(strs));
+  }
+  {
+    std::vector<std::string> strs{"ab", "a"};
+    CHECK("a" == P003_longestCommonPrefix(strs));
+  }
+  {
+    std::vector<std::string> strs{"a", "b"};
+    CHECK("" == P003_longestCommonPrefix(strs));
   }
 }
