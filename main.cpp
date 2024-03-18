@@ -141,7 +141,6 @@ std::string P004_reverseWords(std::string s) {
   trim(s);
   std::vector<std::string> v = split(s);
   std::reverse(v.begin(), v.end());
-  std::cout << v << std::endl << v.size() << std::endl;
   return implode(v);
 }
 
