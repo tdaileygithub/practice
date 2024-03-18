@@ -31,6 +31,8 @@
 *.out
 *.app
 
+*.swp
+
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
